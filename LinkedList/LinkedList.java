@@ -107,6 +107,41 @@ public class LinkedList{
             temp = temp.next;
         }
     }
+
+    //Interative approach to find an element; it returns the index of that element if found.
+    public int itrSearch(int idx){
+        Node temp = head;
+        int i=0;
+        while(temp!=null){
+            if(temp.data==idx){
+                return i;
+            }
+            i++;
+        }
+
+        return -1;
+    }
+
+    //Recursive approach to find an element; it returns the index of that element if found.
+    public int helper(Node head, int key){
+        if(head==null){
+            return -1;
+        }
+        else if(head.data==key){
+            return 0;
+        }
+
+        int idx = helper(head.next, key);
+        if(idx==-1){
+            return -1;
+        }
+
+        return idx+1;
+    }
+
+    public int recSearch(int key){
+        return helper(head, key);
+    }
     
 
 
